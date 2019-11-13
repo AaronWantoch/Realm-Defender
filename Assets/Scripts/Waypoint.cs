@@ -7,7 +7,7 @@ public class Waypoint : MonoBehaviour
     public bool isExplored = false;
     public Waypoint previusWaypoint;
 
-    const int gridSize = 11;
+    [SerializeField] const int gridSize = 11;
 
     Vector2Int waypointPosition;
 
@@ -23,11 +23,5 @@ public class Waypoint : MonoBehaviour
     public int GetGridSize()
     {
         return gridSize;
-    }
-
-    public void SetTopColor(Color color)
-    {
-        MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
-        topMeshRenderer.material.color = color;
     }
 }

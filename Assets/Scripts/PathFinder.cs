@@ -29,9 +29,7 @@ public class PathFinder : MonoBehaviour
         queue.Enqueue(startWaypoint);
         while (queue.Count>0 && isRunning)
         {
-           searchCenter = queue.Dequeue();
-
-            searchCenter.SetTopColor(Color.red); //todo delete later
+            searchCenter = queue.Dequeue();
             searchCenter.isExplored = true;
 
             CreatePath();
@@ -59,7 +57,6 @@ public class PathFinder : MonoBehaviour
 
             if (!neighbour.isExplored)
             {
-                neighbour.SetTopColor(Color.blue); //todo delete later
                 queue.Enqueue(neighbour);
 
                 neighbour.isExplored = true;
@@ -76,21 +73,13 @@ public class PathFinder : MonoBehaviour
             while (waypoint.previusWaypoint != null)
             {
                 path.Add(waypoint);
-                waypoint.SetTopColor(Color.yellow); //todo delete later
                 waypoint = waypoint.previusWaypoint;
             }
             path.Add(startWaypoint);
-            startWaypoint.SetTopColor(Color.yellow); //todo delete later
             path.Reverse();
 
             isRunning = false;
         }
-    }
-
-    private void SetColorStartAndEnd()
-    {
-        startWaypoint.SetTopColor(Color.yellow);
-        endWaypoint.SetTopColor(Color.cyan);
     }
 
     private void LoadBlocks()
@@ -116,7 +105,6 @@ public class PathFinder : MonoBehaviour
     {
         if (isRunning)
         {
-            SetColorStartAndEnd();
             LoadBlocks();
             PathFind();
         }
