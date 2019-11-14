@@ -39,7 +39,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456032131860268815}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -102,8 +102,9 @@ GameObject:
   - component: {fileID: 2771345615153144742}
   - component: {fileID: 1858520508529510736}
   - component: {fileID: 1420630754747000625}
+  - component: {fileID: 4932183764288395053}
   m_Layer: 0
-  m_Name: 0,0
+  m_Name: Path
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,6 +152,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isExplored: 0
   previusWaypoint: {fileID: 0}
+--- !u!65 &4932183764288395053
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9218152833851088197}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: -5, z: 0}
 --- !u!1001 &7389181227733816213
 PrefabInstance:
   m_ObjectHideFlags: 0

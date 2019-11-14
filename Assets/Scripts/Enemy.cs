@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] int health = 3;
     [SerializeField] float moveSpeed = 2f;
+    [SerializeField] float height = 6f;
 
     PathFinder pathFinder;
     void Start()
@@ -19,7 +20,8 @@ public class Enemy : MonoBehaviour
     {
         foreach (Waypoint waypoint in pathFinder.GetPath())
         {
-            gameObject.transform.position = waypoint.transform.position;
+            gameObject.transform.position = waypoint.transform.position
+                + new Vector3(0, height, 0);
             yield return new WaitForSeconds(moveSpeed);
         }
     }

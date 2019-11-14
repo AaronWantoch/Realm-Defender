@@ -24,4 +24,9 @@ public class Waypoint : MonoBehaviour
     {
         return gridSize;
     }
+
+    void OnMouseOver()
+    {
+        print(gameObject.name);
+    }
 }
