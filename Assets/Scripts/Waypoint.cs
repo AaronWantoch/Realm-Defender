@@ -5,9 +5,12 @@ using UnityEngine;
 public class Waypoint : MonoBehaviour
 {
     public bool isExplored = false;
+    public bool isPlaceable = true;
     public Waypoint previusWaypoint;
 
     [SerializeField] const int gridSize = 11;
+    [SerializeField] Tower tower;
+    [SerializeField] Transform parent;
 
     Vector2Int waypointPosition;
 
@@ -27,6 +30,10 @@ public class Waypoint : MonoBehaviour
 
     void OnMouseOver()
     {
-        print(gameObject.name);
+        if (Input.GetMouseButtonDown(0) && isPlaceable)
+        {
+            Instantiate(tower, transform.position, Quaternion.identity, parent);
+            isPlaceable = false;
+        }
     }
 }

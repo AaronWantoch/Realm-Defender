@@ -151,7 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isExplored: 0
+  isPlaceable: 1
   previusWaypoint: {fileID: 0}
+  tower: {fileID: 726677517993252058, guid: cd825f6eed3b3bd4da204244b1cf7cb4, type: 3}
 --- !u!65 &4932183764288395053
 BoxCollider:
   m_ObjectHideFlags: 0

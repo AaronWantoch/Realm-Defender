@@ -70,16 +70,24 @@ public class PathFinder : MonoBehaviour
         if (searchCenter == endWaypoint)
         {
             Waypoint waypoint = searchCenter;
+
             while (waypoint.previusWaypoint != null)
             {
-                path.Add(waypoint);
+                SetAsPath(waypoint);
                 waypoint = waypoint.previusWaypoint;
             }
-            path.Add(startWaypoint);
+            SetAsPath(waypoint);
+
             path.Reverse();
 
             isRunning = false;
         }
+    }
+
+    private void SetAsPath(Waypoint waypoint)
+    {
+        path.Add(waypoint);
+        waypoint.isPlaceable = false;
     }
 
     private void LoadBlocks()
