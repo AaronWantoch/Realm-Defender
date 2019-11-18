@@ -9,6 +9,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] float height = 6f;
 
+    [SerializeField] ParticleSystem hitParticle;
+    [SerializeField] ParticleSystem deathParticle;
+
     PathFinder pathFinder;
     void Start()
     {
@@ -29,8 +32,11 @@ public class Enemy : MonoBehaviour
     void OnParticleCollision(GameObject other)
     {
         health--;
+        hitParticle.Play();
+
         if(health<=0)
         {
+            Instantiate(deathParticle, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

@@ -76,8 +76,8 @@ public class PathFinder : MonoBehaviour
                 SetAsPath(waypoint);
                 waypoint = waypoint.previusWaypoint;
             }
-            SetAsPath(waypoint);
 
+            SetAsPath(waypoint);
             path.Reverse();
 
             isRunning = false;
