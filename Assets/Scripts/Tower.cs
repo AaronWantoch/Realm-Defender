@@ -11,9 +11,7 @@ public class Tower : MonoBehaviour
     ParticleSystem particleSystem;
     Transform target;
 
-
-
-    bool isShooting = false;
+    public Waypoint towerWaypoint;
 
     void Start()
     {
