@@ -9,7 +9,6 @@ public class Waypoint : MonoBehaviour
     public Waypoint previusWaypoint;
 
     [SerializeField] const int gridSize = 11;
-    [SerializeField] TowerFactory towerFactory;
 
     Vector2Int waypointPosition;
 
@@ -37,7 +36,7 @@ public class Waypoint : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && isPlaceable)
         {
-            towerFactory.PlaceTower(this);
+            FindObjectOfType<TowerFactory>().PlaceTower(this);
         }
     }
 }

@@ -14,16 +14,34 @@ public class TowerFactory : MonoBehaviour
     {
         if (towers.Count >= maxNumberOfTurets)
         {
-            Tower lastTower = towers.Dequeue();
-            lastTower.towerWaypoint.isPlaceable = true;
-            Destroy(lastTower.gameObject);
+            MoveLastTower(waypoint);
+        }
+        else
+        {
+            InstantiateNewTower(waypoint);
         }
 
-        Tower newTower = Instantiate(tower, waypoint.transform.position, 
-            Quaternion.identity, this.transform);
+    }
+
+    private void InstantiateNewTower(Waypoint waypoint)
+    {
+        Tower newTower = Instantiate(tower, waypoint.transform.position,
+                        Quaternion.identity, this.transform);
 
         waypoint.isPlaceable = false;
         newTower.towerWaypoint = waypoint;
         towers.Enqueue(newTower);
+    }
+
+    private void MoveLastTower(Waypoint waypoint)
+    {
+        Tower lastTower = towers.Dequeue();
+
+        lastTower.transform.position = waypoint.transform.position;
+        lastTower.towerWaypoint.isPlaceable = true;
+        lastTower.towerWaypoint = waypoint;
+
+        towers.Enqueue(lastTower);
+        waypoint.isPlaceable = false;
     }
 }

@@ -6,16 +6,28 @@ public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] int health = 3;
+    [SerializeField] int pointsForKill = 5;
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] float height = 6f;
-
+    
     [SerializeField] ParticleSystem hitParticle;
     [SerializeField] ParticleSystem deathParticle;
+    [SerializeField] ParticleSystem baseDamageParticle;
+
+    [SerializeField] AudioClip hitSoundFX;
+    [SerializeField] AudioClip destroyedSoundFX;
+
+    AudioSource audioSource;
 
     PathFinder pathFinder;
+    Score score;
+
     void Start()
     {
         pathFinder = FindObjectOfType<PathFinder>();
+        score = FindObjectOfType<Score>();
+        audioSource = GetComponent<AudioSource>();
+
         StartCoroutine(FollowPath());
     }
  
@@ -27,6 +39,14 @@ public class Enemy : MonoBehaviour
                 + new Vector3(0, height, 0);
             yield return new WaitForSeconds(moveSpeed);
         }
+
+        ParticleSystem particleObject = 
+            Instantiate(baseDamageParticle, transform.position, Quaternion.identity);
+
+        float destroyDelay = particleObject.main.duration;
+        Destroy(particleObject.gameObject, destroyDelay);
+
+        DestroyEnemy();
     }
 
     void OnParticleCollision(GameObject other)
@@ -36,14 +56,23 @@ public class Enemy : MonoBehaviour
 
         if(health<=0)
         {
-            Instantiate(deathParticle, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            score.IncreaseScore(pointsForKill);
+            audioSource.PlayOneShot(hitSoundFX);
+            DestroyEnemy();
+        }
+        else
+        {
+            audioSource.PlayOneShot(destroyedSoundFX);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void DestroyEnemy()
     {
-        
+        ParticleSystem particleObject =
+                        Instantiate(deathParticle, transform.position, Quaternion.identity);
+        float destroyDelay = particleObject.main.duration;
+
+        Destroy(particleObject.gameObject, destroyDelay);
+        Destroy(gameObject);
     }
 }

@@ -119,10 +119,4 @@ public class PathFinder : MonoBehaviour
 
         return path;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
