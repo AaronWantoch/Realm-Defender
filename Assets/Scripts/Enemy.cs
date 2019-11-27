@@ -57,22 +57,24 @@ public class Enemy : MonoBehaviour
         if(health<=0)
         {
             score.IncreaseScore(pointsForKill);
-            audioSource.PlayOneShot(hitSoundFX);
             DestroyEnemy();
         }
         else
         {
-            audioSource.PlayOneShot(destroyedSoundFX);
+            audioSource.PlayOneShot(hitSoundFX);
         }
     }
 
     void DestroyEnemy()
     {
         ParticleSystem particleObject =
-                        Instantiate(deathParticle, transform.position, Quaternion.identity);
+                       Instantiate(deathParticle, transform.position, Quaternion.identity);
         float destroyDelay = particleObject.main.duration;
-
         Destroy(particleObject.gameObject, destroyDelay);
+
+        AudioSource.
+            PlayClipAtPoint(destroyedSoundFX,Camera.main.transform.position);
+
         Destroy(gameObject);
     }
 }
