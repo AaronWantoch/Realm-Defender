@@ -1,11 +1,15 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemiesSpawner : MonoBehaviour
 {
     [SerializeField] Transform prefab;
-    [SerializeField] float spawnTime = 2f;
+
+    [SerializeField] float spawnDecreaseTime = 0.1f;
+    [SerializeField] float spawnTime = 3f;
+    [SerializeField] float spawnMinTime = 1.75f;
 
     AudioSource enemySpawnSound;
 
@@ -22,7 +26,17 @@ public class EnemiesSpawner : MonoBehaviour
         {
             enemySpawnSound.Play();
             Instantiate(prefab, gameObject.transform);
+
+            DecreaseSpawnTime();
             yield return new WaitForSeconds(spawnTime);
+        }
+    }
+
+    private void DecreaseSpawnTime()
+    {
+        if (spawnTime > spawnMinTime)
+        {
+            spawnTime -= spawnDecreaseTime;
         }
     }
 }

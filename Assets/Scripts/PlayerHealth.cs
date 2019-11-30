@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -23,5 +24,10 @@ public class PlayerHealth : MonoBehaviour
         healthText.text = health.ToString();
 
         loseHealthSoundFX.Play();
+
+        if(health<=0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }

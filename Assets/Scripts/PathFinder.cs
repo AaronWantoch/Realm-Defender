@@ -10,6 +10,8 @@ public class PathFinder : MonoBehaviour
     List<Waypoint> path = new List<Waypoint>();
 
     Waypoint searchCenter;
+
+    [SerializeField] Material materialOfPath;
     
     bool isRunning = true;
 
@@ -88,6 +90,9 @@ public class PathFinder : MonoBehaviour
     {
         path.Add(waypoint);
         waypoint.isPlaceable = false;
+
+        MeshRenderer meshRenderer = waypoint.GetComponentInChildren<MeshRenderer>();
+        meshRenderer.material = materialOfPath;
     }
 
     private void LoadBlocks()

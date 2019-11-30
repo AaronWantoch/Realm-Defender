@@ -23,10 +23,8 @@ public class CubeEditor : MonoBehaviour
 
     private void SetCubeLabel()
     {
-        textMesh = GetComponentInChildren<TextMesh>();
         string labelText = snapPosition.x / gridSize + "," + snapPosition.z / gridSize;
 
-        textMesh.text = labelText;
         gameObject.name = labelText;
     }
 
