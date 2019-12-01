@@ -24,11 +24,12 @@ public class EnemiesSpawner : MonoBehaviour
     {
         while(true)
         {
-            enemySpawnSound.Play();
             Instantiate(prefab, gameObject.transform);
+            yield return new WaitForSeconds(spawnTime);
+
+            enemySpawnSound.Play();
 
             DecreaseSpawnTime();
-            yield return new WaitForSeconds(spawnTime);
         }
     }
 

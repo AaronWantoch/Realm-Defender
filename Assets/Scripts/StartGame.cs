@@ -6,14 +6,20 @@ public class StartGame : MonoBehaviour
 {
     GameObject tutorialPanel;
 
-    private void Start()
-    {
+    [SerializeField] AudioSource music;
 
+    void Start()
+    {
         tutorialPanel = this.gameObject;
+
+        Time.timeScale = 0;
+        tutorialPanel.SetActive(true);
     }
 
     public void DisableTutorial()
     {
+        Time.timeScale = 1;
         tutorialPanel.SetActive(false);
+        music.Play();
     }
 }

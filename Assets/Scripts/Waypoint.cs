@@ -34,7 +34,7 @@ public class Waypoint : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0) && isPlaceable)
+        if (Input.GetMouseButtonDown(0) && isPlaceable && Time.timeScale > Mathf.Epsilon)
         {
             FindObjectOfType<TowerFactory>().PlaceTower(this);
         }

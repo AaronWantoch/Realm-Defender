@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
     
     [SerializeField] ParticleSystem hitParticle;
     [SerializeField] ParticleSystem deathParticle;
-    [SerializeField] ParticleSystem baseDamageParticle;
 
     [SerializeField] AudioClip hitSoundFX;
     [SerializeField] AudioClip destroyedSoundFX;
@@ -39,14 +38,6 @@ public class Enemy : MonoBehaviour
                 + new Vector3(0, height, 0);
             yield return new WaitForSeconds(moveSpeed);
         }
-
-        ParticleSystem particleObject = 
-            Instantiate(baseDamageParticle, transform.position, Quaternion.identity);
-
-        float destroyDelay = particleObject.main.duration;
-        Destroy(particleObject.gameObject, destroyDelay);
-
-        DestroyEnemy();
     }
 
     void OnParticleCollision(GameObject other)
@@ -65,7 +56,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void DestroyEnemy()
+    public void DestroyEnemy()
     {
         ParticleSystem particleObject =
                        Instantiate(deathParticle, transform.position, Quaternion.identity);
