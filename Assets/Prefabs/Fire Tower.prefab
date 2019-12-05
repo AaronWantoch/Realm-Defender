@@ -4761,7 +4761,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5988875043132632291}
-  - component: {fileID: 5988875043132632290}
+  - component: {fileID: 3090817339497519440}
   m_Layer: 0
   m_Name: Fire Tower
   m_TagString: Untagged
@@ -4785,7 +4785,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5988875043132632290
+--- !u!114 &3090817339497519440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4794,12 +4794,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5988875043132632289}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e196d97a3582125419c0c0420d265c18, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fc1b826bec6ca8438b01d8c1b0bf15b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotatedElement: {fileID: 5985935220477392691}
-  maxDistance: 30
+  maxDistance: 25
+  damageDealt: 2
   towerWaypoint: {fileID: 0}
+  enemyMaterial: {fileID: 2100000, guid: e72776d7eac67cd46b52b03514f8c54a, type: 2}
+  burnInterval: 2
+  numberOfBurns: 3
 --- !u!1001 &5988875043287130087
 PrefabInstance:
   m_ObjectHideFlags: 0

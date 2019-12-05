@@ -6,6 +6,8 @@ public class Waypoint : MonoBehaviour
 {
     public bool isExplored = false;
     public bool isPlaceable = true;
+    public bool isEnemyOn = false;
+
     public Waypoint previusWaypoint;
 
     [SerializeField] const int gridSize = 11;

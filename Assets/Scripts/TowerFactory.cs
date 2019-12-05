@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class TowerFactory : MonoBehaviour
 {
-    [SerializeField] int maxNumberOfTurets = 3;
+    Tower tower;
 
-    [SerializeField] Tower tower;
-
-    Queue<Tower> towers = new Queue<Tower>();
+    List<Tower> towers = new List<Tower>();
+    List<Tower> towerPrefabs = new List<Tower>();
 
     public void PlaceTower(Waypoint waypoint)
     {
-        if (towers.Count >= maxNumberOfTurets)
+        if (towerPrefabs.Contains(tower))
         {
-            MoveLastTower(waypoint);
+            MoveTower(waypoint);
         }
         else
         {
@@ -30,18 +29,25 @@ public class TowerFactory : MonoBehaviour
 
         waypoint.isPlaceable = false;
         newTower.towerWaypoint = waypoint;
-        towers.Enqueue(newTower);
+
+        towerPrefabs.Add(tower);
+        towers.Add(newTower);
     }
 
-    private void MoveLastTower(Waypoint waypoint)
+    private void MoveTower(Waypoint waypoint)
     {
-        Tower lastTower = towers.Dequeue();
+        int movedTowerIndex = towerPrefabs.IndexOf(tower);
+        Tower movedTower = towers[movedTowerIndex];
 
-        lastTower.transform.position = waypoint.transform.position;
-        lastTower.towerWaypoint.isPlaceable = true;
-        lastTower.towerWaypoint = waypoint;
+        movedTower.transform.position = waypoint.transform.position;
+        movedTower.towerWaypoint.isPlaceable = true;
+        movedTower.towerWaypoint = waypoint;
 
-        towers.Enqueue(lastTower);
         waypoint.isPlaceable = false;
+    }
+
+    public void SetTypeOfTower(Tower newTower)
+    {
+        tower = newTower;
     }
 }

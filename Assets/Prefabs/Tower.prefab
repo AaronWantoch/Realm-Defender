@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotatedElement: {fileID: 728245151848369931}
-  enemy: {fileID: 0}
   maxDistance: 30
+  damageDealt: 3
+  towerWaypoint: {fileID: 0}
 --- !u!1 &4749668539069144558
 GameObject:
   m_ObjectHideFlags: 0

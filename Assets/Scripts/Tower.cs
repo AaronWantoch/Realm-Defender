@@ -6,12 +6,16 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     [SerializeField] Transform rotatedElement;
+
     [SerializeField] float maxDistance = 20f;
+
+    public int damageDealt = 1;
+
+    public Waypoint towerWaypoint;
 
     ParticleSystem particleSystem;
     Transform target;
-
-    public Waypoint towerWaypoint;
+    
 
     void Start()
     {
@@ -87,5 +91,19 @@ public class Tower : MonoBehaviour
             return false;
         else
             return true;
+    }
+
+    protected void SetEnemyMaterial(Enemy enemy, Material enemyMaterial)
+    {
+        MeshRenderer enemyMeshRenderer =
+                    enemy.gameObject.GetComponentInChildren<MeshRenderer>();
+
+        Material oldMaterial = enemyMeshRenderer.material;
+        enemyMeshRenderer.material = enemyMaterial;
+    }
+
+    virtual public void AdditionalEffect(Enemy enemy)
+    {
+        ;
     }
 }

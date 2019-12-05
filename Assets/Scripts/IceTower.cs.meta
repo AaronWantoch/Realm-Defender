@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 65c4e03171cbdf043a1b868c9669165d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - rotatedElement: {instanceID: 0}
+  - towerWaypoint: {instanceID: 0}
+  - enemyMaterial: {fileID: 2100000, guid: 7af7a4563ffea5c4e9f27f33ffd9b355, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
