@@ -52,6 +52,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (health <= 0)
         {
+            PlayerPrefs.SetInt("points", FindObjectOfType<Score>().points);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

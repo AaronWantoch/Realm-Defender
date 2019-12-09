@@ -24,14 +24,18 @@ public class TowerFactory : MonoBehaviour
 
     private void InstantiateNewTower(Waypoint waypoint)
     {
-        Tower newTower = Instantiate(tower, waypoint.transform.position,
-                        Quaternion.identity, this.transform);
+        if (tower != null)
+        {
+            Tower newTower = Instantiate(tower, waypoint.transform.position,
+                             Quaternion.identity, this.transform);
 
-        waypoint.isPlaceable = false;
-        newTower.towerWaypoint = waypoint;
+            waypoint.isPlaceable = false;
+            newTower.towerWaypoint = waypoint;
 
-        towerPrefabs.Add(tower);
-        towers.Add(newTower);
+            towerPrefabs.Add(tower);
+            towers.Add(newTower);
+        }
+       
     }
 
     private void MoveTower(Waypoint waypoint)

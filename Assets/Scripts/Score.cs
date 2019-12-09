@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    Text scoreText;
-    int points = 0;
+    public int points = 0;
 
+    Text scoreText;
     private void Start()
     {
         scoreText = GetComponent<Text>();
